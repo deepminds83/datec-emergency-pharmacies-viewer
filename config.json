@@ -1,5 +1,5 @@
 {
-	"url": "http://lak-bw.notdienst-portal.de/xmlschnittstelle/notdienstkreis/ergebnis/?dayCount=14&emergencyAreas=102&key=14036076560095_5016aef376f7c2e3e15cd2cd049d8d13",
+	"url": "http://www.akwl.de/notdienst/xml.php?m=all&z=2016-3-1;2016-03-10",
 	"period": ["/notdienste/zeitraum","/notdienstplan/zeitraum"],
 	"entry": ["/container/entries/entry","/notdienste/notdienst","/notdienstplan/notdienste/notdienst"],
 	"name": ["/container/entries/entry/name","/notdienste/notdienst/apotheke","/notdienstplan/notdienste/notdienst/apotheke"],

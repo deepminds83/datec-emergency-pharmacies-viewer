@@ -44,7 +44,7 @@ class XMLParser {
 			}
 			
 		} else {
-			throw new Exception("Das Element ".$key." konnte nicht gefunden werden.");
+			throw new \Exception("Das Element ".$key." konnte nicht gefunden werden.");
 		}
 		return array();
 	}

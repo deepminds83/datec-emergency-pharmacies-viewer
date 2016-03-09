@@ -79,9 +79,9 @@ class EmergenciesController {
 		}
 		
 		// TODO: filter
-		$xmlEntries = $this->filter->filter($entries,"",5);
+		$xmlEntries = $this->filter->filter($entries,$this->config->startTime,$this->config->endTime);
 		// TODO: rendering
-		$content = $this->render->renderEntries($xmlEntries,$this->config->displayElements);
+		$content = $this->render->renderEntries($xmlEntries, $this->config->displayElements);
 		
 		return $content;
 	}

@@ -3,14 +3,12 @@ namespace Datec\EmergencyServices\Service;
 
 class EntryFilter {
 	
-	public function filter(array $entries,$start,$end) {
+	public function filter(array $entries, $start = "", $end= "") {
 		$startTime = new \DateTime();
-		if(!empty($start)){
-			$startTime = new \DateTime($start);
-		}
 		$endTime = clone $startTime;
+
 		if(!empty($end)) {
-			$endTime->modify("+5 day");			
+			$endTime->modify("+".$end." day");			
 		}
 		
 		$resultEntry = array();
@@ -23,8 +21,26 @@ class EntryFilter {
 					$resultEntry[$i] = $entry;
 					$i++;
 				}
+				if(!empty($start)){
+					$entryTime->modify("-".$start." day");
+					if($entryTime >= $startTime && $entryTime <= $endTime) {
+						$resultEntry[$i] = $entry;
+						$i++;
+					}
+				}
 			} else {
-				$entryTime = new \DateTime($value);
+				$entryTime = new \DateTime($entry['date']);
+				if($entryTime <= $endTime) {
+					$resultEntry[$i] = $entry;
+					$i++;
+				}
+				if(!empty($start)) {
+					$entryTime->modify("-".$start." day");
+					if($entryTime >= $startTime && $entryTime <= $endTime) {
+						$resultEntry[$i] = $entry;
+						$i++;
+					}
+				}
 			}
 		}
 		

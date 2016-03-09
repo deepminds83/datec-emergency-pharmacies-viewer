@@ -13,7 +13,8 @@
 	"lat": ["/container/entries/entry/lat","/notdienste/notdienst/latitude","/notdienstplan/notdienste/notdienst/latitude"],
 	"lon": ["/container/entries/entry/lon","/notdienste/notdienst/longitude","/notdienstplan/notdienste/notdienst/longitude"],
 	"date": ["/notdienste/notdienst/datum","/notdienstplan/notdienste/notdienst/datum"],
-	"endTime": "5",
+	"startTime":"",
+	"endTime": "",
 	"displayElements": {
 		"name": "p",
 		"street": "p",
