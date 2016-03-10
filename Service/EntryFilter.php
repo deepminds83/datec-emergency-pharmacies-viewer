@@ -3,47 +3,53 @@ namespace Datec\EmergencyServices\Service;
 
 class EntryFilter {
 	
-	public function filter(array $entries, $start = "", $end= "") {
+	/**
+	 * Filter the entry by date
+	 * @param array $entries
+	 * @param boolen $start
+	 * @param string $end
+	 
+	 */
+	public function filter(array &$entries, $useStartTime, $end= "") {
 		$startTime = new \DateTime();
 		$endTime = clone $startTime;
-
-		if(!empty($end)) {
-			$endTime->modify("+".$end." day");			
+		
+		if(!empty($end)){
+			$endTime->modify("+".$end." day");
 		}
 		
-		$resultEntry = array();
-		$i = 0;
-		
-		foreach($entries as $entry) {
-			if(array_key_exists("from",$entry)){
-				$entryTime = new \DateTime($entry['from']);
-				if($entryTime <= $endTime) {
-					$resultEntry[$i] = $entry;
-					$i++;
-				}
-				if(!empty($start)){
-					$entryTime->modify("-".$start." day");
-					if($entryTime >= $startTime && $entryTime <= $endTime) {
-						$resultEntry[$i] = $entry;
-						$i++;
+		if(!empty($entries)) {
+			foreach($entries as $key => $entry) {
+				if(array_key_exists("from", $entry)) {
+					$entryFrom = new \DateTime($entry['from']);
+					$entryTo = new \DateTime($entry['to']);
+					
+					if($entryFrom > $endTime) {
+						unset($entries[$key]);
 					}
-				}
-			} else {
-				$entryTime = new \DateTime($entry['date']);
-				if($entryTime <= $endTime) {
-					$resultEntry[$i] = $entry;
-					$i++;
-				}
-				if(!empty($start)) {
-					$entryTime->modify("-".$start." day");
-					if($entryTime >= $startTime && $entryTime <= $endTime) {
-						$resultEntry[$i] = $entry;
-						$i++;
+					if($useStartTime){
+						if($entryFrom < $startTime && $entryTo < $startTime) {
+							unset($entries[$key]);
+						}
+					}
+				} else if(array_key_exists("date", $entry)) {
+					$entryFrom = new \DateTime($entry['date']);
+					if($entryFrom > $endTime) {
+						unset($entries[$key]);
+						
+					}
+					if($useStartTime) {
+						if($entryFrom < $startTime && $entryTo < $startTime) {
+							unset($entries[$key]);
+						}
 					}
 				}
 			}
+		} else {
+			
 		}
 		
-		return $resultEntry;
+		return $entries;
 	}
 }
+?>

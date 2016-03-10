@@ -1,14 +1,16 @@
 <?php
 namespace Datec\EmergencyServices\Repository;
 
-class EmergenciesRepository {
+class EntriesRepository {
 	
+	/**
+	 * Load Entries form the url
+	 * @param string $url
+	 * @throws \Exception
+	 */
 	public function loadEntry($url) {
-		if(!empty($url)) {
 			$xml = simplexml_load_file($url);
 			return $xml;
-		} else {
-			throw new Exception("Geben Sie bitte eine Url in der config.php an");
-		}
 	}
 }
+?>

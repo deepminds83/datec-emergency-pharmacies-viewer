@@ -1,16 +1,18 @@
 <?php
 namespace Datec\EmergencyServices\Controller;
 
-require_once('../Repository/EmergenciesRepository.php');
+require_once('../Repository/EntriesRepository.php');
 require_once('../Service/XMLParser.php');
-require_once('../View/Render.php');
+require_once('../View/Renderer.php');
 require_once('../Service/EntryFilter.php');
+require_once('../Service/ConfigValidater.php');
 
 
-use Datec\EmergencyServices\Repository\EmergenciesRepository;
+use Datec\EmergencyServices\Repository\EntriesRepository;
 use Datec\EmergencyServices\Service\XMLParser;
-use Datec\EmergencyServices\View\Render;
+use Datec\EmergencyServices\View\Renderer;
 use Datec\EmergencyServices\Service\EntryFilter;
+use Datec\EmergencyServices\Service\ConfigValidater;
 
 class EmergenciesController {
 	
@@ -30,8 +32,22 @@ class EmergenciesController {
 	 * @var stdClass
 	 */
 	protected $config;
-	protected $render;
-	protected $filter;
+	
+	/**
+	 * @var Renderer
+	 */
+	protected $renderer;
+	
+	/**
+	 * @var EntryFilter
+	 */
+	protected $entryFilter;
+	
+	/**
+	 * 
+	 * @var ConfigValidater
+	 */
+	protected $configValidater;
 	
 	/**
 	 * Array of results from loaded emergencies.
@@ -43,55 +59,56 @@ class EmergenciesController {
 	protected $result;
 	
 	protected function init () {
+		$this->renderer = new Renderer();
+		$this->emergenciesRepository = new EntriesRepository();		
+		$this->entryFilter = new EntryFilter();
+		$this->configValidater = new ConfigValidater();
 		$this->loadConfig();
-		$this->emergenciesRepository = new EmergenciesRepository();
-		$this->render = new Render();
-		$this->filter = new EntryFilter();
 		$this->xmlParser = new XMLParser($this->config);
 	}
 	
 	/**
-	 * Loads all, parses, filters, renders.
+	 * Loads all, parses, filters, renderers.
 	 * 
-	 * return string HTML output after rendering
+	 * return string HTML output after renderering
 	 */
 	public function main() {
 		$content = 'EmergenciesController - runs';
+		$errors = array();
+		$xmlEntries = array();
+		
 		try {
 			$this->init();
-		} catch (\Exception $e) {
-			// output config errors
-		}
-				
 		
-		try {
-			$xmlResults = $this->emergenciesRepository ->loadEntry($this->config->url); //TODO: laden
-			// xmlResults
-		} catch (\Exception $e) {
-			
-		}	
+			$xmlResults = $this->emergenciesRepository->loadEntry($this->config->url); //TODO: laden
 		
-		try {
+			xdebug_break();
 			$entries = $this->xmlParser->parseEntries($xmlResults);
-			// result
+			
+			$xmlEntries = $this->entryFilter->filter($entries, (bool) $this->config->useCurrentTime, $this->config->toDay); // validate userCurrentTime isset
 		} catch (\Exception $e) {
-				
+			$errors[] = $e->getMessage();
 		}
 		
-		// TODO: filter
-		$xmlEntries = $this->filter->filter($entries,$this->config->startTime,$this->config->endTime);
-		// TODO: rendering
-		$content = $this->render->renderEntries($xmlEntries, $this->config->displayElements);
+		$this->renderer->setConfig($this->config);
+		$content = $this->renderer->renderEntries($xmlEntries, $errors);
 		
 		return $content;
 	}
 	
+	/**
+	 * Load the config file
+	 * @throws Exception
+	 */
 	private function loadConfig() {
 		$jsonfile = "../Config/config.json";
 		if (file_exists($jsonfile)) {
 			$json = file_get_contents($jsonfile);
 			$json = utf8_encode($json);
 			$this->config = json_decode($json);
+			
+			//Validate cofig 
+			$this->configValidater->configValidate($this->config);
 		} else {
 			throw new Exception("Die Datei config.php konnte nicht gefunden werden.");
 		}
@@ -101,3 +118,4 @@ class EmergenciesController {
 $emergencies = new EmergenciesController();
 
 echo $emergencies->main();
+?>

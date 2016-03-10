@@ -34,19 +34,17 @@ class XMLParser {
 	 * @param string $name        	
 	 * @return array
 	 */
-	public function getXMLArray($key) {
-		if(property_exists($this->config, $key)) {
-			$count = count($this->config->{$key});
-			for($i = 0; $i < $count; $i ++) {
-				if (count($this->xml->xpath($this->config->{$key}[$i]))) {
-					return $this->xml->xpath($this->config->{$key}[$i]);
-				}
+	private function getXMLArray($key) {
+		foreach($this->config->propertiesXmlPaths->{$key} as $xmlPath) {
+			$value = $this->xml->xpath($xmlPath);
+			if (!empty($value)) {
+				break;
 			}
-			
-		} else {
-			throw new \Exception("Das Element ".$key." konnte nicht gefunden werden.");
 		}
-		return array();
+		if ($value === FALSE || empty($value)) { // depending on libxml  version, both register as error of path not found
+			throw new \Exception('Die Eigenschaft "'.$key.'" wurde nicht im Ergebnis gefunden.');
+		}
+		return $value;
 	}
 	
 	/**
@@ -54,21 +52,23 @@ class XMLParser {
 	 * return void
 	 */
 	public function parseEntries($xmlResult) {
-		$this->xml = $xmlResult;
-		foreach($this->config->displayElements as $key => $val){
-			$value = $this->getXMLArray($key);
-			if (!empty($value)) {
+		$entries = array();
+		if(!empty($xmlResult)) {
+			$this->xml = $xmlResult;
+			foreach($this->config->propertiesDisplay as $key => $tags){
+				$value = $this->getXMLArray($key);
 				for($i = 0; $i < count($value); $i++) {
 					if ($key === "period") {
 						continue;
 					}
 					$entries[$i][$key] = $value[$i];
-				}
+				}			
 			}
+		} else {
+			throw new \Exception('Es konnten keine Inhalte gefunden werden.');
 		}
+		
 		return $entries;
-		
-		
 	}
 }
 ?>

@@ -1,28 +1,30 @@
 {
-	"url": "http://lak-bw.notdienst-portal.de/xmlschnittstelle/notdienstkreis/ergebnis/?dayCount=14&emergencyAreas=102&key=14036076560095_5016aef376f7c2e3e15cd2cd049d8d13",
-	"period": ["/notdienste/zeitraum","/notdienstplan/zeitraum"],
-	"entry": ["/container/entries/entry","/notdienste/notdienst","/notdienstplan/notdienste/notdienst"],
-	"name": ["/container/entries/entry/name","/notdienste/notdienst/apotheke","/notdienstplan/notdienste/notdienst/apotheke"],
-	"street": ["/container/entries/entry/street","/notdienste/notdienst/strasse","/notdienstplan/notdienste/notdienst/strasse"],
-	"zipCode": ["/container/entries/entry/zipCode","/notdienste/notdienst/plz","/notdienstplan/notdienste/notdienst/plz"],
-	"location": ["/container/entries/entry/location","/notdienste/notdienst/ort","/notdienstplan/notdienste/notdienst/ort"],
-	"subLocation": ["/container/entries/entry/subLocation","/notdienste/notdienst/ortsteil","/notdienstplan/notdienste/notdienst/ortsteil"],
-	"phone": ["/container/entries/entry/phone","/notdienste/notdienst/telefon","/notdienstplan/notdienste/notdienst/telefon"],
-	"to": ["/container/entries/entry/to"],
-	"from": ["/container/entries/entry/from"],
-	"lat": ["/container/entries/entry/lat","/notdienste/notdienst/latitude","/notdienstplan/notdienste/notdienst/latitude"],
-	"lon": ["/container/entries/entry/lon","/notdienste/notdienst/longitude","/notdienstplan/notdienste/notdienst/longitude"],
-	"date": ["/notdienste/notdienst/datum","/notdienstplan/notdienste/notdienst/datum"],
-	"startTime":"",
-	"endTime": "",
-	"displayElements": {
-		"name": "p",
-		"street": "p",
-		"zipCode": "span",
-		"location": "span",
-		"phone": "p",
-		"from":"p",
-		"to":"p"
-		
+	"url": "http://laknds.notdienst-portal.de/lakndsportal/xmlschnittstelle/standort/ergebnis?dayCount=14&emergencyCount=2&lat=52.1651756&lon=10.21684449999998&key=1402558675963_-1363263808",
+	"propertiesXmlPaths": {
+		"period": ["/notdienste/zeitraum","/notdienstplan/zeitraum"],
+		"entry": ["/container/entries/entry","/notdienste/notdienst","/notdienstplan/notdienste/notdienst"],
+		"name": ["/container/entries/entry/name","/notdienste/notdienst/apotheke","/notdienstplan/notdienste/notdienst/apotheke"],
+		"street": ["/container/entries/entry/street","/notdienste/notdienst/strasse","/notdienstplan/notdienste/notdienst/strasse"],
+		"zipCode": ["/container/entries/entry/zipCode","/notdienste/notdienst/plz","/notdienstplan/notdienste/notdienst/plz"],
+		"location": ["/container/entries/entry/location","/notdienste/notdienst/ort","/notdienstplan/notdienste/notdienst/ort"],
+		"subLocation": ["/container/entries/entry/subLocation","/notdienste/notdienst/ortsteil","/notdienstplan/notdienste/notdienst/ortsteil"],
+		"phone": ["/container/entries/entry/phone","/notdienste/notdienst/telefon","/notdienstplan/notdienste/notdienst/telefon"],
+		"to": ["/container/entries/entry/to"],
+		"from": ["/container/entries/entry/from"],
+		"lat": ["/container/entries/entry/lat","/notdienste/notdienst/latitude","/notdienstplan/notdienste/notdienst/latitude"],
+		"lon": ["/container/entries/entry/lon","/notdienste/notdienst/longitude","/notdienstplan/notdienste/notdienst/longitude"],
+		"date": ["/notdienste/notdienst/datum","/notdienstplan/notdienste/notdienst/datum"]
+	},
+	"useCurrentTime": true,
+	"toDay": 10,
+	"phoneRegionPrefix": "+49",
+	"propertiesDisplay": {
+		"name": ["div","a","p"],
+		"street": ["p"],
+		"zipCode": ["span"],
+		"location": ["span"],
+		"phone": ["p","a"],
+		"from": ["div"],
+		"to": ["div"]
 	}
 }
