@@ -1,5 +1,5 @@
 {
-	"url": "http://laknds.notdienst-portal.de/lakndsportal/xmlschnittstelle/standort/ergebnis?dayCount=14&emergencyCount=2&lat=52.1651756&lon=10.21684449999998&key=1402558675963_-1363263808",
+	"url": "",
 	"propertiesXmlPaths": {
 		"period": ["/notdienste/zeitraum","/notdienstplan/zeitraum"],
 		"entry": ["/container/entries/entry","/notdienste/notdienst","/notdienstplan/notdienste/notdienst"],
