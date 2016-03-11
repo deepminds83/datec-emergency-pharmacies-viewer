@@ -14,7 +14,7 @@ class EntryFilter {
 		$startTime = new \DateTime();
 		$endTime = clone $startTime;
 		
-		if(!empty($end)){
+		if($end > 0){
 			$endTime->modify("+".$end." day");
 		}
 		

@@ -16,7 +16,7 @@
 		"date": ["/notdienste/notdienst/datum","/notdienstplan/notdienste/notdienst/datum"]
 	},
 	"useCurrentTime": true,
-	"toDay": 10,
+	"toDay": 0,
 	"phoneRegionPrefix": "+49",
 	"propertiesDisplay": {
 		"name": ["div","a","p"],

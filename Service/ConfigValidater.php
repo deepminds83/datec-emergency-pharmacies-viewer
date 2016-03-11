@@ -11,9 +11,6 @@ class ConfigValidater {
 			throw new \Exception('Tragen Sie bitte eine URL ein.');
 		}
 		
-		if(empty($config->useCurrentTime)) {
-			throw new \Exception('"useCurrentTime" darf nicht leer sein');
-		}
 		if(!is_bool($config->useCurrentTime)) {
 			throw new \Exception('"useCurrentTime" darf nur True oder False sein');
 		}
