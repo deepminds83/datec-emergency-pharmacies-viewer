@@ -19,7 +19,7 @@
 	"toDay": 0,
 	"phoneRegionPrefix": "+49",
 	"propertiesDisplay": {
-		"name": ["div","a","p"],
+		"name": ["div"],
 		"street": ["p"],
 		"zipCode": ["span"],
 		"location": ["span"],
