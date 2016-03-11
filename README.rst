@@ -1,6 +1,6 @@
-===================
-XML-Notdienstportal
-===================
+=================================
+Datec Notdienst-Apotheken Anzeige
+=================================
 Scripte für das laden und anzeigen(HTML) von Apotheken Notdienst Informationen (XML) 
 
 LIZENZBEDINGUNGEN
