@@ -63,4 +63,4 @@ Die genaue Bezeichnung der Elemente kann aus der XML Datei ausgelesen werden.
 
 Probleme / Fragen / Anmerkungen
 -----------------------------
-Wenn Sie Probleme, Fragen oder Anmerkungen haben kontaktieren Sie bitte: André Fischer info@datec-schmidt.de  
+Wenn Sie Probleme, Fragen oder Anmerkungen haben kontaktieren Sie bitte: André Fischer a.fischer@datec-schmidt.de  
