@@ -39,13 +39,13 @@ usecurrentTime       bool         Gibt an ob Apotheken angezeigt werden wo der N
 toDay                int          Wie viele weitere Tage angezeigt werden sollen                                                    0
 phoneRegionPrefix    string       Internationale Telefonvorwahl                                                                     +49
 propertiesDisplay    Objekt       Elemente die angezeigt werden und mit HTML Tags umschlossen werden.                               { "name": ["div"], ...}
-==================   =========    ===============================================================================================   ============================================
+===================  =========    ===============================================================================================   ============================================
 
 
 Hinweis zu propertiesDisplay
 ----------------------------
-| Es dürfen nur Eigenschaften eingetragen werden die auch als XPath vorhanden sind.
-| Sie können ein Array an HTML Tags angeben um einen HTML Baum zu erzeugen.
+Es dürfen nur Eigenschaften eingetragen werden die auch als XPath vorhanden sind.
+Sie können ein Array an HTML Tags angeben um einen HTML Baum zu erzeugen.
 
 Hinweis zu propertiesXmlPaths
 -----------------------------
@@ -53,13 +53,13 @@ Es dürfen nur XML Elemente ausgelesen werden die im XML Baum stehen.
 
 Formatierung mit CSS
 --------------------
-| Die einzelnen Klassen der HTML Tags müssen noch mit CSS formatiert werden.
-| Für die XML Elemente werden CSS Klassen aus den jeweiligen Elementen generiert.
+Die einzelnen Klassen der HTML Tags müssen noch mit CSS formatiert werden.
+Für die XML Elemente werden CSS Klassen aus den jeweiligen Elementen generiert.
 
 Schnittstellenspezifische Konfiguration
 ---------------------------------------
-| Je nach Schnittstelle gibt es verschiedene Elemente die zur Anzeige gebracht werden können.
-| Die genaue Bezeichnung der Elemente kann aus der XML Datei ausgelesen werden.
+Je nach Schnittstelle gibt es verschiedene Elemente die zur Anzeige gebracht werden können.
+Die genaue Bezeichnung der Elemente kann aus der XML Datei ausgelesen werden.
 
 Probleme / Fragen / Anmerkungen
 -----------------------------
