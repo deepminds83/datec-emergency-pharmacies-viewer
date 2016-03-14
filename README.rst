@@ -28,7 +28,7 @@ Gehen Sie dazu auf die Homepage der gewünschten Apothekenkammer, dann auf Notdi
 
 Konfiguration
 -------------
-Dateiname:**Config/config.json**
+Dateiname: **Config/config.json**
 
 ===================  ==========   ===============================================================================================   ============================================
 Eigenschaft          Datentyp     Beschreibung                                                                                      Standartwert
@@ -40,6 +40,7 @@ toDay                int          Wie viele weitere Tage angezeigt werden sollen
 phoneRegionPrefix    string       Internationale Telefonvorwahl                                                                     +49
 propertiesDisplay    Objekt       Elemente die angezeigt werden und mit HTML Tags umschlossen werden.                               { "name": ["div"], ...}
 ==================   =========    ===============================================================================================   ============================================
+
 
 Hinweis zu propertiesDisplay
 ----------------------------
