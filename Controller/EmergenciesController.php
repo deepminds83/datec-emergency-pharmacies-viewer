@@ -1,11 +1,11 @@
 <?php
 namespace Datec\EmergencyServices\Controller;
 
-require_once('../Repository/EntriesRepository.php');
-require_once('../Service/XMLParser.php');
-require_once('../View/Renderer.php');
-require_once('../Service/EntryFilter.php');
-require_once('../Service/ConfigValidater.php');
+require_once('Repository/EntriesRepository.php');
+require_once('Service/XMLParser.php');
+require_once('View/Renderer.php');
+require_once('Service/EntryFilter.php');
+require_once('Service/ConfigValidater.php');
 
 
 use Datec\EmergencyServices\Repository\EntriesRepository;
@@ -101,7 +101,7 @@ class EmergenciesController {
 	 * @throws Exception
 	 */
 	private function loadConfig() {
-		$jsonfile = "../Config/config.json";
+		$jsonfile = "Config/config.json";
 		if (file_exists($jsonfile)) {
 			$json = file_get_contents($jsonfile);
 			$json = utf8_encode($json);
@@ -110,12 +110,12 @@ class EmergenciesController {
 			//Validate cofig 
 			$this->configValidater->configValidate($this->config);
 		} else {
-			throw new Exception("Die Datei config.php konnte nicht gefunden werden.");
+			throw new \Exception("Die Datei config.json konnte nicht gefunden werden.");
 		}
 	}
 }
 
 $emergencies = new EmergenciesController();
-
 echo $emergencies->main();
+
 ?>
