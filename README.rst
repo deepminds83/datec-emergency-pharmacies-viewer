@@ -32,14 +32,14 @@ Dateiname: **Config/config.json**
 
 ===================  ==========   ===============================================================================================   ============================================
 Eigenschaft          Datentyp     Beschreibung                                                                                      Standartwert
-===================  =========    ===============================================================================================   ============================================
+===================  ==========   ===============================================================================================   ============================================
 url                  int          URL der Schnittstelle
 propertiesXmlPaths   Objekt       Elemente die mit dem angegebenen XPath ausgelesen werden sollen.                                  {"to": ["/container/entries/entry/to"],...}
 usecurrentTime       bool         Gibt an ob Apotheken angezeigt werden wo der Notdienst noch nicht geendet hat                     true
 toDay                int          Wie viele weitere Tage angezeigt werden sollen                                                    0
 phoneRegionPrefix    string       Internationale Telefonvorwahl                                                                     +49
 propertiesDisplay    Objekt       Elemente die angezeigt werden und mit HTML Tags umschlossen werden.                               { "name": ["div"], ...}
-===================  =========    ===============================================================================================   ============================================
+===================  ==========   ===============================================================================================   ============================================
 
 
 Hinweis zu propertiesDisplay
