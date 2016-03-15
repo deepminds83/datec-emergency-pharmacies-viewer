@@ -82,7 +82,6 @@ class EmergenciesController {
 		
 			$xmlResults = $this->emergenciesRepository->loadEntry($this->config->url); //TODO: laden
 		
-			xdebug_break();
 			$entries = $this->xmlParser->parseEntries($xmlResults);
 			
 			$xmlEntries = $this->entryFilter->filter($entries, (bool) $this->config->useCurrentTime, $this->config->toDay); // validate userCurrentTime isset
