@@ -19,12 +19,12 @@
 	"toDay": 0,
 	"phoneRegionPrefix": "+49",
 	"propertiesDisplay": {
+		"from": ["<p class=\"date\">","b","u","&nbsp;&ndash;&nbsp;"],
+		"to": ["b","u","</p>"],
 		"name": ["div"],
 		"street": ["p"],
-		"zipCode": ["span"],
-		"location": ["span"],
-		"phone": ["p","a"],
-		"from": ["div"],
-		"to": ["div"]
+		"zipCode": ["<p class=\"city\">", "span","&nbsp;"],
+		"location": ["span", "</p>"],
+		"phone": ["p","a"]
 	}
 }

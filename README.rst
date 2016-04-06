@@ -1,12 +1,13 @@
-=================================
+﻿=================================
 Datec Notdienst-Apotheken Anzeige
 =================================
 Scripte für das laden und anzeigen(HTML) von Apotheken Notdienst Informationen (XML) 
 
 LIZENZBEDINGUNGEN
 -----------------
-| Das XML-Notdienstportal ist frei verwendbar.
-| Es ist nicht gestattet den Link auf Datentechnik Schmidt GmbH zu entfernen.
+Das XML-Notdienstportal ist frei verwendbar.
+Es ist nicht gestattet den Link auf Datec Schmidt Software GmbH zu entfernen.
+
 
 Installation
 ------------
@@ -19,6 +20,15 @@ Fügen Sie an der gewünschten Stelle in Ihrem HTML Code folgendes ein:
 Oder verweisen Sie auf folgende Datei:
 
 <Ihr Installationspfad>/datec-emergency-pharmacies-viewer-master/index.php
+
+
+(Optional)
+Möchten Sie die Ressourcen für mehrere Instanzen mit unterschiedlicher Konfiguration einsetzen, können Sie den Pfad zur Konfigurationsdatei folgenderweise ergänzen.
+
+?configFilePath=<Pfad zur Konfigurationsdatei>.json
+
+Wobei Sie absolute oder relative Dateipfade angeben können.
+
 
 URL für die Schnittstellen
 --------------------------
@@ -45,21 +55,26 @@ propertiesDisplay    Objekt       Elemente die angezeigt werden und mit HTML Tag
 Hinweis zu propertiesDisplay
 ----------------------------
 Es dürfen nur Eigenschaften eingetragen werden die auch als XPath vorhanden sind.
-Sie können ein Array an HTML Tags angeben um einen HTML Baum zu erzeugen.
+Sie können eine  Liste (Array) an HTML Tags-Namen angeben um einen HTML Baum zu erzeugen.
+Oder Geben Sie reines HTML an um z.B. eigene Tags zu definieren, mehrere Eigenschaften zusammenzufassen oder Symbole hinzuzufügen. Sehen Sie sich dazu die Konfiguration für "zipCode" und "location" im Beispiel an.
+
 
 Hinweis zu propertiesXmlPaths
 -----------------------------
-Es dürfen nur XML Elemente ausgelesen werden die im XML Baum stehen.
+Es können nur XML Elemente konfiguriert werden die im XML Baum stehen, prüfen Sie die Richtigkeit der möglichen Pfade.
+Alle gelisteten Pfade werden ausgelesen, bis ein Wert zur Anzeige gefunden ist.
 
 Formatierung mit CSS
 --------------------
 Die einzelnen Klassen der HTML Tags müssen noch mit CSS formatiert werden.
 Für die XML Elemente werden CSS Klassen aus den jeweiligen Elementen generiert.
 
+
 Schnittstellenspezifische Konfiguration
 ---------------------------------------
 Je nach Schnittstelle gibt es verschiedene Elemente die zur Anzeige gebracht werden können.
 Die genaue Bezeichnung der Elemente kann aus der XML Datei ausgelesen werden.
+
 
 Probleme / Fragen / Anmerkungen
 -----------------------------

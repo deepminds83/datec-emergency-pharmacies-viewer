@@ -99,8 +99,13 @@ class EmergenciesController {
 	 * Load the config file
 	 * @throws Exception
 	 */
-	private function loadConfig() {
-		$jsonfile = "Config/config.json";
+	private function loadConfig() {		
+		if (isset($_GET['configFilePath'])) {			
+			$jsonfile = $_GET['configFilePath'];
+		} else {
+			$jsonfile = "Config/config.json";
+		}
+		
 		if (file_exists($jsonfile)) {
 			$json = file_get_contents($jsonfile);
 			$json = utf8_encode($json);

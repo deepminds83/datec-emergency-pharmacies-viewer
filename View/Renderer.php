@@ -27,19 +27,9 @@ class Renderer {
 			$content .= "<div class=\"notdienste\">\n";
 		
 			foreach($entries as $entry) {
-				$content .= "<div class=\"entry\">";
-				if (array_key_exists("from", $entry) && array_key_exists("to", $entry)) {
-					$content .= "<p class=\"date\">".date("d.m.Y G:i", strtotime($entry['from'])). " - ".date ("d.m.Y G:i", strtotime($entry['to'])) . "</p>";
-				}
-					
-				foreach($this->config->propertiesDisplay as $prop => $tags){
-					
-						if ($prop === "from" || $prop === "to" || $prop === "period") {
-							continue;
-						}
-							
-						$content .= $this->wrapByTags($tags, $entry[$prop], $prop);
-					
+				$content .= "<div class=\"entry\">";					
+				foreach($this->config->propertiesDisplay as $prop => $tags) {							
+					$content .= $this->wrapByTags($tags, $entry[$prop], $prop);
 				}
 				$content .= "</div>";
 			}
@@ -55,14 +45,24 @@ class Renderer {
 	private function wrapByTags($tags, $value, $prop) {
 		$content = "";
 		foreach($tags as $key => $tag) {
-			$classes = ($key === 0) ? array($prop) : array();
-			$content .= $this->renderStartTag($tag, $prop, $classes, $value);
-		}
-		$content .= $value;
+			if (ctype_alpha($tag)) { // is only aplha-numeric tag name	
+				$classes = (!isset($classes)) ? array($prop) : array(); // classes only on the first tag element
+				$content .= $this->renderStartTag($tag, $prop, $classes, $value);
+			} else if (!ctype_alpha($tag) && $key === 0) { // any other html content, can be rendered before (when first in taglist)
+				$content .= $tag;
+				unset($tags[$key]);
+			}
+		}	
+		
+		$content .= ($prop == "from" || $prop == "to" || $prop == "date") ? date("d.m.Y H:i", strtotime($value)) :  $value;  // default formatting dates
 	
 		$tags = array_reverse($tags);
-		foreach($tags as $tag) {
-			$content .='</'.$tag.'>';
+		foreach($tags as $key => $tag) {
+			if (ctype_alpha($tag)) { // is only aplha-numeric tag name, start tag was rendered			
+				$content .='</'.$tag.'>';
+		    } else if (!ctype_alpha($tag) && $key === 0) { // any other html content, can be rendered after (when last in taglist / first in reversed taglist)
+				$content .= $tag;
+			}
 		}
 	
 		return $content;

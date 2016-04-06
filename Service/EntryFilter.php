@@ -4,7 +4,8 @@ namespace Datec\EmergencyServices\Service;
 class EntryFilter {
 	
 	/**
-	 * Filter the entry by date
+	 * Filter entries by date.
+	 *
 	 * @param array $entries
 	 * @param boolen $start
 	 * @param string $end
