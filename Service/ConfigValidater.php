@@ -24,7 +24,11 @@ class ConfigValidater {
 		if(!is_int($config->toDay)) {
 			throw new \Exception('Geben Sie bei "toDay" nur Zahlen ein.');
 		}
-				
+		$arrObj = new \ArrayObject($config->propertiesXmlPaths);
+		if(!$arrObj->count() || empty($config->propertiesXmlPaths)) {
+			throw new \Exception("Geben Sie bitte f&uuml;r propertiesXmlPaths eine Liste (Array) an");
+		}
+		
 		foreach($config->propertiesXmlPaths as $prop => $value) {			
 			if (!is_array($value)) {
 				throw new \Exception('F&uuml;r die Eigenschaft "'.$prop.'" wurden keine XML-Pfade angegeben.');
@@ -35,7 +39,8 @@ class ConfigValidater {
 			}
 		}
 		
-		if(!is_array($config->propertiesDisplay) && empty($config->propertiesDisplay)) {
+		$arrObj = new \ArrayObject($config->propertiesDisplay);
+		if(!$arrObj->count() || empty($config->propertiesDisplay)) {
 			throw new \Exception('Geben Sie bitte Elemente an die angezeigt werden soll');
 		}
 		

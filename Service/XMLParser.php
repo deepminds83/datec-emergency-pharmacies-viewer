@@ -53,7 +53,7 @@ class XMLParser {
 	 */
 	public function parseEntries($xmlResult) {
 		$entries = array();
-		if(!empty($xmlResult)) {
+		if($xmlResult->count()) {
 			$this->xml = $xmlResult;
 			foreach($this->config->propertiesDisplay as $key => $tags){
 				$value = $this->getXMLArray($key);
